@@ -1,0 +1,27 @@
+Standard Library Reference
+========
+
+.. toctree::
+
+   algorithms/index
+   bio/index
+   bisect
+   collections
+   functools
+   getopt
+   gzip
+   heapq
+   internal/index
+   itertools
+   math
+   operator
+   os/index
+   pickle
+   python
+   random
+   sortedlist
+   statistics
+   string
+   sys
+   threading
+   time

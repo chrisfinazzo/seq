@@ -1,0 +1,373 @@
+.. seq:module:: internal.c_stubs
+
+:seq:mod:`internal.c_stubs`
+---------------------------
+
+Source code: `internal/c_stubs.seq <https://github.com/seq-lang/seq/blob/master/stdlib/internal/c_stubs.seq>`_
+
+.. seq:function:: seq_print( : str)
+
+
+
+.. seq:function:: seq_print_full( : str,  : cobj)
+
+
+
+.. seq:function:: seq_strdup( : cobj)
+
+
+
+.. seq:function:: seq_stdin()
+
+
+
+.. seq:function:: seq_stdout()
+
+
+
+.. seq:function:: seq_stderr()
+
+
+
+.. seq:function:: seq_env()
+
+
+
+.. seq:function:: seq_time()
+
+
+
+.. seq:function:: seq_time_monotonic()
+
+
+
+.. seq:function:: seq_pid()
+
+
+
+.. seq:function:: seq_lock_new()
+
+
+
+.. seq:function:: seq_lock_acquire( : cobj,  : bool,  : float)
+
+
+
+.. seq:function:: seq_lock_release( : cobj)
+
+
+
+.. seq:function:: seq_rlock_new()
+
+
+
+.. seq:function:: seq_rlock_acquire( : cobj,  : bool,  : float)
+
+
+
+.. seq:function:: seq_rlock_release( : cobj)
+
+
+
+.. seq:function:: seq_i32_to_float( : i32)
+
+
+
+.. seq:function:: isdigit( : int)
+
+
+
+.. seq:function:: isspace( : int)
+
+
+
+.. seq:function:: isupper( : int)
+
+
+
+.. seq:function:: islower( : int)
+
+
+
+.. seq:function:: toupper( : int)
+
+
+
+.. seq:function:: tolower( : int)
+
+
+
+.. seq:function:: isalnum( : int)
+
+
+
+.. seq:function:: isalpha( : int)
+
+
+
+.. seq:function:: istitle( : int)
+
+
+
+.. seq:function:: ceil( : float)
+
+
+
+.. seq:function:: floor( : float)
+
+
+
+.. seq:function:: fabs( : float)
+
+
+
+.. seq:function:: fmod( : float,  : float)
+
+
+
+.. seq:function:: exp( : float)
+
+
+
+.. seq:function:: expm1( : float)
+
+
+
+.. seq:function:: ldexp( : float,  : int)
+
+
+
+.. seq:function:: log( : float)
+
+
+
+.. seq:function:: log2( : float)
+
+
+
+.. seq:function:: log10( : float)
+
+
+
+.. seq:function:: sqrt( : float)
+
+
+
+.. seq:function:: pow( : float,  : float)
+
+
+
+.. seq:function:: round( : float)
+
+
+
+.. seq:function:: acos( : float)
+
+
+
+.. seq:function:: asin( : float)
+
+
+
+.. seq:function:: atan( : float)
+
+
+
+.. seq:function:: atan2( : float,  : float)
+
+
+
+.. seq:function:: cos( : float)
+
+
+
+.. seq:function:: sin( : float)
+
+
+
+.. seq:function:: tan( : float)
+
+
+
+.. seq:function:: cosh( : float)
+
+
+
+.. seq:function:: sinh( : float)
+
+
+
+.. seq:function:: tanh( : float)
+
+
+
+.. seq:function:: acosh( : float)
+
+
+
+.. seq:function:: asinh( : float)
+
+
+
+.. seq:function:: atanh( : float)
+
+
+
+.. seq:function:: copysign( : float,  : float)
+
+
+
+.. seq:function:: log1p( : float)
+
+
+
+.. seq:function:: trunc( : float)
+
+
+
+.. seq:function:: log2( : float)
+
+
+
+.. seq:function:: erf( : float)
+
+
+
+.. seq:function:: erfc( : float)
+
+
+
+.. seq:function:: tgamma( : float)
+
+
+
+.. seq:function:: lgamma( : float)
+
+
+
+.. seq:function:: remainder( : float,  : float)
+
+
+
+.. seq:function:: frexp( : float,  : Ptr[Int[__int__]])
+
+
+
+.. seq:function:: modf( : float,  : Ptr[float])
+
+
+
+.. seq:function:: ferror( : cobj)
+
+
+
+.. seq:function:: fgetc( : cobj)
+
+
+
+.. seq:function:: fopen( : cobj,  : cobj)
+
+
+
+.. seq:function:: fclose( : cobj)
+
+
+
+.. seq:function:: fread( : cobj,  : int,  : int,  : cobj)
+
+
+
+.. seq:function:: fwrite( : cobj,  : int,  : int,  : cobj)
+
+
+
+.. seq:function:: ftell( : cobj)
+
+
+
+.. seq:function:: fseek( : cobj,  : int,  : i32)
+
+
+
+.. seq:function:: fgets( : cobj,  : int,  : cobj)
+
+
+
+.. seq:function:: fflush( : cobj)
+
+
+
+.. seq:function:: getline( : Ptr[cobj],  : Ptr[int],  : cobj)
+
+
+
+.. seq:function:: exit( : int)
+
+
+
+.. seq:function:: system( : cobj)
+
+
+
+.. seq:function:: free( : cobj)
+
+
+
+.. seq:function:: atoi( : cobj)
+
+
+
+.. seq:function:: gzopen( : cobj,  : cobj)
+
+
+
+.. seq:function:: gzerror( : cobj,  : Ptr[i32])
+
+
+
+.. seq:function:: gzgetc( : cobj)
+
+
+
+.. seq:function:: gzgets( : cobj,  : cobj,  : i32)
+
+
+
+.. seq:function:: gzclose( : cobj)
+
+
+
+.. seq:function:: gzread( : cobj,  : cobj,  : u32)
+
+
+
+.. seq:function:: gzwrite( : cobj,  : cobj,  : u32)
+
+
+
+.. seq:function:: gztell( : cobj)
+
+
+
+.. seq:function:: gzseek( : cobj,  : int,  : i32)
+
+
+
+.. seq:function:: omp_get_num_threads()
+
+
+
+.. seq:function:: omp_get_thread_num()
+
+
+
+.. seq:function:: omp_get_max_threads()
+
+
+
+.. seq:function:: omp_get_num_procs()
+
+
+
+
+

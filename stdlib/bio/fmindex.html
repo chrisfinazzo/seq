@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>bio.fmindex &mdash; Seq 0.10.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="bio.intervals" href="intervals.html" />
+    <link rel="prev" title="bio.fastq" href="fastq.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #333131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Seq
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#pre-built-binaries">Pre-built binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#compile-time-definitions">Compile-time definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/setup.html">Set-up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/primer.html">Language Primer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#printing">Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#literals">Literals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuples">Tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#containers">Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#assignments-and-operators">Assignments and operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuple-unpacking">Tuple unpacking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#control-flow">Control flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#conditionals">Conditionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#loops">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#comprehensions">Comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#exception-handling">Exception handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#variables-and-scoping">Variables and scoping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generics">Generics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generators">Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#foreign-function-interface-ffi">Foreign function interface (FFI)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#classes-and-types">Classes and types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#magic-methods">Magic methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#llvm-functions">LLVM functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#bio-specific-features">Bio-specific features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-types">Genomic types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-matching">Sequence matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-index-prefetching">Genomic index prefetching</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#other-features">Other features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#parallelism">Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#other-types">Other types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#calling-bwa-from-seq">Calling BWA from Seq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/workshop.html">Workshop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#code-listings">Code Listings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-1-reading-sequences-from-disk">Section 1: Reading sequences from disk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#full-code-listing">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-2-building-an-index">Section 2: Building an index</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section2-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-3-finding-k-mer-matches">Section 3: Finding k-mer matches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section3-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-4-smith-waterman-alignment-and-cigar-strings">Section 4: Smith-Waterman alignment and CIGAR strings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section4-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-5-pipelines">Section 5: Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#optional-parallelism">(Optional) Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section5-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-6-domain-specific-optimizations">Section 6: Domain-specific optimizations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section6-code">Full code listing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#subsequence-extraction">Subsequence extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-extraction">k-mer extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complementation">Reverse complementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-distance">k-mer Hamming distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-neighbors">k-mer Hamming neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-minimizer">k-mer minimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#de-bruijn-edge">de Bruijn edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#count-bases">Count bases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#spaced-seed-search">Spaced seed search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complement-palindrome">Reverse-complement palindrome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-fasta-fastq">Reading FASTA/FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-paired-end-fastq">Reading paired-end FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#parallel-fastq-processing">Parallel FASTQ processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-sam-bam-cram">Reading SAM/BAM/CRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#dna-to-protein-translation">DNA to protein translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-protein-sequences-from-fasta">Reading protein sequences from FASTA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../python.html">Calling Python from Seq</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#from-python-import"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">python</span> <span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#python"><code class="docutils literal notranslate"><span class="pre">&#64;python</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../embed.html">Calling Seq from C/C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../embed.html#converting-types">Converting types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build.html">Building from Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standard Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html">algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/heapsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.heapsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/insertionsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.insertionsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/pdqsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.pdqsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/qsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.qsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/strings.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.strings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/timsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.timsort</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">bio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="align.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.align</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bam.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bam</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bed.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="block.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.block</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bwa.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bwt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_htslib.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.c_htslib</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fai.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fai</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fasta.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fasta</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fastq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fastq</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fmindex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intervals.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.intervals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="iter.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.iter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kmer.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.kmer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="locus.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.locus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="prefetch.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.prefetch</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pseq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.pseq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="seq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.seq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vcf.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.vcf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../bisect.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bisect</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collections.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">collections</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">functools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getopt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">getopt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gzip.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">gzip</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heapq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">heapq</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../internal/index.html">internal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../internal/__init_test__.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.__init_test__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/attributes.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.attributes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/box.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.box</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/c_stubs.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.c_stubs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/dlopen.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.dlopen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/file.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.file</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/gc.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.gc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/internal.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.internal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/khash.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.khash</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.python</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/sort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.sort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/types/index.html">internal.types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/array.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/bool.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.bool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/byte.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.byte</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/collections/index.html">internal.types.collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/error.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/float.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/generator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.generator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/int.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/intn.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.intn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/optional.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.optional</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/ptr.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.ptr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/range.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/slice.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.slice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.str</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../itertools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">itertools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">math</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">operator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os/index.html">os</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../os/path.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">os.path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pickle.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">pickle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">python</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">random</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sortedlist.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sortedlist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../statistics.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">statistics</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../string.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">string</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sys</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../threading.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">threading</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">time</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Seq</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Standard Library Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">bio</a> &raquo;</li>
+        
+      <li><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fmindex</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/stdlib/bio/fmindex.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-bio.fmindex"></span><div class="section" id="bio-fmindex">
+<h1><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fmindex</span></code><a class="headerlink" href="#bio-fmindex" title="Permalink to this headline">¶</a></h1>
+<p>Source code: <a class="reference external" href="https://github.com/seq-lang/seq/blob/master/stdlib/bio/fmindex.seq">bio/fmindex.seq</a></p>
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.bntann">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">bntann</span></span><a class="headerlink" href="#bio.fmindex.bntann" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">len</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.bntamb">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">bntamb</span></span><a class="headerlink" href="#bio.fmindex.bntamb" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amb</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">byte</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">bntseq</span></span><a class="headerlink" href="#bio.fmindex.bntseq" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Arbitrary-length 2-bit packed sequence, adapted from BWA</p>
+</div></blockquote>
+<p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq._n_holes">
+<span class="sig-name descname"><span class="pre">_n_holes</span></span><a class="headerlink" href="#bio.fmindex.bntseq._n_holes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__pickle__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Jar</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__unpickle__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Jar</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq.get_pac">
+<span class="sig-name descname"><span class="pre">get_pac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pac</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">u8</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.bntseq.get_pac" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq.depos">
+<span class="sig-name descname"><span class="pre">depos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.bntseq.depos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq.pos2rid">
+<span class="sig-name descname"><span class="pre">pos2rid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.bntseq.pos2rid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq.intv2rid">
+<span class="sig-name descname"><span class="pre">intv2rid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rb</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.bntseq.intv2rid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq.cnt_ambi">
+<span class="sig-name descname"><span class="pre">cnt_ambi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">len</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.bntseq.cnt_ambi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.bntseq.get_seq">
+<span class="sig-name descname"><span class="pre">get_seq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lo</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.bntseq.get_seq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.FMInterval">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">FMInterval</span></span><a class="headerlink" href="#bio.fmindex.FMInterval" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>FM-index interval</p>
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDInterval">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">FMDInterval</span></span><a class="headerlink" href="#bio.fmindex.FMDInterval" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>FMD-index interval</p>
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__invert__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p><cite>FMDInterval</cite> for the reverse complemented sequence</p>
+</div></blockquote>
+</dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDInterval.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDInterval.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward-direction <cite>FMInterval</cite> corresponding to this interval</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDInterval.revcomp">
+<span class="sig-name descname"><span class="pre">revcomp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDInterval.revcomp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse-direction <cite>FMInterval</cite> corresponding to this interval</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.SMEM">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">SMEM</span></span><a class="headerlink" href="#bio.fmindex.SMEM" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Super-Maximal Exact Match (SMEM)</p>
+</div></blockquote>
+<p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.fmindex.SMEM.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><a class="headerlink" href="#bio.fmindex.SMEM.interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corresponding <cite>FMDInterval</cite></p>
+</dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.fmindex.SMEM.start">
+<span class="sig-name descname"><span class="pre">start</span></span><a class="headerlink" href="#bio.fmindex.SMEM.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>SMEM start position on query (0-based)</p>
+</dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.fmindex.SMEM.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><a class="headerlink" href="#bio.fmindex.SMEM.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>SMEM stop position on query (non-inclusive; 0-based)</p>
+</dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__bool__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.fmindex.smems">
+<span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">smems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mems</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.smems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of SMEMs given an FsM-index or FMD-index (<cite>self</cite>), a
+query sequence (<cite>q</cite>) and a start position (<cite>x</cite>; 0-based).
+Adapted from BWA-MEM’s <cite>bwt_smem1a()</cite>.</p>
+</dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.fmindex.OCC_INTV_SHIFT">
+<span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">OCC_INTV_SHIFT</span></span><a class="headerlink" href="#bio.fmindex.OCC_INTV_SHIFT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.fmindex.OCC_INTERVAL">
+<span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">OCC_INTERVAL</span></span><a class="headerlink" href="#bio.fmindex.OCC_INTERVAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.fmindex.OCC_INTV_MASK">
+<span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">OCC_INTV_MASK</span></span><a class="headerlink" href="#bio.fmindex.OCC_INTV_MASK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">FMDIndex</span></span><a class="headerlink" href="#bio.fmindex.FMDIndex" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>FMD-index: a bi-directional FM-index. Based on BWA-MEM’s implementation.
+Note that this implementation <em>does</em> perform SA-compression.</p>
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__pickle__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Jar</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__unpickle__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Jar</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Constructs an FM-index from the FASTA file at the specified path</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Constructs an FM-index from the specified sequence</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">seq</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Equivalent to <cite>self.update(x[0], x[1])</cite>.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">seq</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Equivalent to <cite>self.biupdate(x[0], x[1])</cite>.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Iterator over all 0-based positions from specified interval</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Iterator over all 0-based positions at which the given
+sequence appears</p>
+</div></blockquote>
+</dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.occ">
+<span class="sig-name descname"><span class="pre">occ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.occ" title="Permalink to this definition">¶</a></dt>
+<dd><p>FM-index <em>occ</em> operation</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.less">
+<span class="sig-name descname"><span class="pre">less</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.less" title="Permalink to this definition">¶</a></dt>
+<dd><p>FM-index <em>less</em> operation</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.interval" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>FMInterval</cite> corresponding to given length-1 sequence</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.biinterval">
+<span class="sig-name descname"><span class="pre">biinterval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.biinterval" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>FMDInterval</cite> corresponding to given length-1 sequence</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.smems">
+<span class="sig-name descname"><span class="pre">smems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mems</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.smems" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <cite>smems</cite> function</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns given <cite>FMInterval</cite> extended by base <cite>c</cite></p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.biupdate">
+<span class="sig-name descname"><span class="pre">biupdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.biupdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns given <cite>FMDInterval</cite> extended by base <cite>c</cite></p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns how many times the given sequence appears in the index</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.results">
+<span class="sig-name descname"><span class="pre">results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">both_strands</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over tuples (contig ID (<cite>int</cite>), contig name (<cite>str</cite>), 0-based position (<cite>int</cite>), reversed? (<cite>bool</cite>))
+tuples corresponding to specified interval. <cite>both_strands</cite> determines whether to
+include reverse complemented results.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.loci">
+<span class="sig-name descname"><span class="pre">loci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">both_strands</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.loci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over <cite>Locus</cite> values contained in the specified interval.
+<cite>both_strands</cite> determines whether to include reverse complemented results.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.biresults">
+<span class="sig-name descname"><span class="pre">biresults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smem</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.biresults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over tuples (contig ID (<cite>int</cite>), contig name (<cite>str</cite>), 0-based position (<cite>int</cite>), reversed? (<cite>bool</cite>))
+tuples corresponding to specified interval.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.biloci">
+<span class="sig-name descname"><span class="pre">biloci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.biloci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over <cite>Locus</cite> values contained in the specified interval.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.locate">
+<span class="sig-name descname"><span class="pre">locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">both_strands</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.locate" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>results</cite> of interval corresponding to given sequence</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.sequence">
+<span class="sig-name descname"><span class="pre">sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtains the underlying sequence from this index given 0-based <cite>start</cite> and <cite>stop</cite>
+(non-inclusive) positions and either contig ID <cite>rid</cite> or contig name <cite>name</cite>.
+Note that ambiguous bases are randomly replaced with A/C/G/T.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.contigs">
+<span class="sig-name descname"><span class="pre">contigs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.contigs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over <a href="#id1"><span class="problematic" id="id2">`</span></a>Contig`s contained in this index</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMDIndex.contig">
+<span class="sig-name descname"><span class="pre">contig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMDIndex.contig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <cite>Contig</cite> with the specified ID</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.fmindex.</span></span><span class="sig-name descname"><span class="pre">FMIndex</span></span><a class="headerlink" href="#bio.fmindex.FMIndex" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>FM-index data structure.
+Note that this implementation <em>does not</em> perform SA-compression.</p>
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__pickle__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Jar</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__unpickle__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Jar</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Constructs an FM-index from the specified sequence</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Constructs an FM-index from the FASTA file at the specified path</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FMD</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Constructs an FM-index from the FASTA file at the specified path.
+<cite>FMD</cite> controls whether this index should be bi-directional.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">seq</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Equivalent to <cite>self.update(x[0], x[1])</cite>.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">seq</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Equivalent to <cite>self.biupdate(x[0], x[1])</cite>.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__prefetch__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">seq</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__prefetch__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">seq</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Iterator over all 0-based positions from specified interval</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Iterator over all 0-based positions at which the given
+sequence appears</p>
+</div></blockquote>
+</dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.occ">
+<span class="sig-name descname"><span class="pre">occ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.occ" title="Permalink to this definition">¶</a></dt>
+<dd><p>FM-index <em>occ</em> operation</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.less">
+<span class="sig-name descname"><span class="pre">less</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.less" title="Permalink to this definition">¶</a></dt>
+<dd><p>FM-index <em>less</em> operation</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.interval" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>FMInterval</cite> corresponding to given length-1 sequence</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.biinterval">
+<span class="sig-name descname"><span class="pre">biinterval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.biinterval" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>FMDInterval</cite> corresponding to given length-1 sequence</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.smems">
+<span class="sig-name descname"><span class="pre">smems</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mems</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prev</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.smems" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <cite>smems</cite> function</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns given <cite>FMInterval</cite> extended by base <cite>c</cite></p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.biupdate">
+<span class="sig-name descname"><span class="pre">biupdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.biupdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns given <cite>FMDInterval</cite> extended by base <cite>c</cite></p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.count">
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns how many times the given sequence appears in the index</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.results">
+<span class="sig-name descname"><span class="pre">results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over tuples (contig ID (<cite>int</cite>), contig name (<cite>str</cite>), 0-based position (<cite>int</cite>), reversed? (<cite>bool</cite>))
+tuples corresponding to specified interval. <cite>both_strands</cite> determines whether to
+include reverse complemented results.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.loci">
+<span class="sig-name descname"><span class="pre">loci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMInterval" title="bio.fmindex.FMInterval"><span class="pre">FMInterval</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.loci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over <cite>Locus</cite> values contained in the specified interval.
+<cite>both_strands</cite> determines whether to include reverse complemented results.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.biresults">
+<span class="sig-name descname"><span class="pre">biresults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smem</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.SMEM" title="bio.fmindex.SMEM"><span class="pre">SMEM</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.biresults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over tuples (contig ID (<cite>int</cite>), contig name (<cite>str</cite>), 0-based position (<cite>int</cite>), reversed? (<cite>bool</cite>))
+tuples corresponding to specified interval.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.biloci">
+<span class="sig-name descname"><span class="pre">biloci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intv</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#bio.fmindex.FMDInterval" title="bio.fmindex.FMDInterval"><span class="pre">FMDInterval</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.biloci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over <cite>Locus</cite> values contained in the specified interval.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.locate">
+<span class="sig-name descname"><span class="pre">locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.locate" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>results</cite> of interval corresponding to given sequence</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.sequence">
+<span class="sig-name descname"><span class="pre">sequence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtains the underlying sequence from this index given 0-based <cite>start</cite> and <cite>stop</cite>
+(non-inclusive) positions and either contig ID <cite>rid</cite> or contig name <cite>name</cite>.
+Note that ambiguous bases are randomly replaced with A/C/G/T.</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.contigs">
+<span class="sig-name descname"><span class="pre">contigs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.contigs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iterator over <a href="#id3"><span class="problematic" id="id4">`</span></a>Contig`s contained in this index</p>
+</dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.fmindex.FMIndex.contig">
+<span class="sig-name descname"><span class="pre">contig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.fmindex.FMIndex.contig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <cite>Contig</cite> with the specified ID</p>
+</dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="intervals.html" class="btn btn-neutral float-right" title="bio.intervals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fastq.html" class="btn btn-neutral float-left" title="bio.fastq" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019-2021, seq-lang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

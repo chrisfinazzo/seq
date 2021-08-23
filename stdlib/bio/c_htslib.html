@@ -1,0 +1,709 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>bio.c_htslib &mdash; Seq 0.10.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="bio.fai" href="fai.html" />
+    <link rel="prev" title="bio.bwt" href="bwt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #333131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Seq
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#pre-built-binaries">Pre-built binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#compile-time-definitions">Compile-time definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/setup.html">Set-up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/primer.html">Language Primer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#printing">Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#literals">Literals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuples">Tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#containers">Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#assignments-and-operators">Assignments and operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuple-unpacking">Tuple unpacking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#control-flow">Control flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#conditionals">Conditionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#loops">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#comprehensions">Comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#exception-handling">Exception handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#variables-and-scoping">Variables and scoping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generics">Generics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generators">Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#foreign-function-interface-ffi">Foreign function interface (FFI)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#classes-and-types">Classes and types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#magic-methods">Magic methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#llvm-functions">LLVM functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#bio-specific-features">Bio-specific features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-types">Genomic types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-matching">Sequence matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-index-prefetching">Genomic index prefetching</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#other-features">Other features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#parallelism">Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#other-types">Other types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#calling-bwa-from-seq">Calling BWA from Seq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/workshop.html">Workshop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#code-listings">Code Listings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-1-reading-sequences-from-disk">Section 1: Reading sequences from disk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#full-code-listing">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-2-building-an-index">Section 2: Building an index</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section2-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-3-finding-k-mer-matches">Section 3: Finding k-mer matches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section3-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-4-smith-waterman-alignment-and-cigar-strings">Section 4: Smith-Waterman alignment and CIGAR strings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section4-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-5-pipelines">Section 5: Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#optional-parallelism">(Optional) Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section5-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-6-domain-specific-optimizations">Section 6: Domain-specific optimizations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section6-code">Full code listing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#subsequence-extraction">Subsequence extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-extraction">k-mer extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complementation">Reverse complementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-distance">k-mer Hamming distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-neighbors">k-mer Hamming neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-minimizer">k-mer minimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#de-bruijn-edge">de Bruijn edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#count-bases">Count bases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#spaced-seed-search">Spaced seed search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complement-palindrome">Reverse-complement palindrome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-fasta-fastq">Reading FASTA/FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-paired-end-fastq">Reading paired-end FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#parallel-fastq-processing">Parallel FASTQ processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-sam-bam-cram">Reading SAM/BAM/CRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#dna-to-protein-translation">DNA to protein translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-protein-sequences-from-fasta">Reading protein sequences from FASTA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../python.html">Calling Python from Seq</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#from-python-import"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">python</span> <span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#python"><code class="docutils literal notranslate"><span class="pre">&#64;python</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../embed.html">Calling Seq from C/C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../embed.html#converting-types">Converting types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build.html">Building from Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standard Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html">algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/heapsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.heapsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/insertionsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.insertionsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/pdqsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.pdqsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/qsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.qsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/strings.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.strings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/timsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.timsort</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">bio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="align.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.align</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bam.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bam</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bed.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="block.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.block</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bwa.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bwt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwt</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.c_htslib</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fai.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fai</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fasta.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fasta</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fastq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fastq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmindex.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fmindex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intervals.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.intervals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="iter.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.iter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kmer.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.kmer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="locus.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.locus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="prefetch.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.prefetch</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pseq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.pseq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="seq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.seq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="vcf.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.vcf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../bisect.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bisect</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collections.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">collections</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">functools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getopt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">getopt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gzip.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">gzip</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heapq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">heapq</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../internal/index.html">internal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../internal/__init_test__.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.__init_test__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/attributes.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.attributes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/box.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.box</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/c_stubs.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.c_stubs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/dlopen.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.dlopen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/file.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.file</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/gc.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.gc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/internal.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.internal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/khash.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.khash</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.python</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/sort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.sort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/types/index.html">internal.types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/array.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/bool.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.bool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/byte.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.byte</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/collections/index.html">internal.types.collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/error.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/float.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/generator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.generator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/int.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/intn.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.intn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/optional.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.optional</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/ptr.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.ptr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/range.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/slice.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.slice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.str</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../itertools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">itertools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">math</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">operator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os/index.html">os</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../os/path.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">os.path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pickle.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">pickle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">python</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">random</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sortedlist.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sortedlist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../statistics.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">statistics</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../string.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">string</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sys</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../threading.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">threading</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">time</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Seq</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Standard Library Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">bio</a> &raquo;</li>
+        
+      <li><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.c_htslib</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/stdlib/bio/c_htslib.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-bio.c_htslib"></span><div class="section" id="bio-c-htslib">
+<h1><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.c_htslib</span></code><a class="headerlink" href="#bio-c-htslib" title="Permalink to this headline">¶</a></h1>
+<p>Source code: <a class="reference external" href="https://github.com/seq-lang/seq/blob/master/stdlib/bio/c_htslib.seq">bio/c_htslib.seq</a></p>
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.hts_open">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">hts_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.hts_open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.hts_close">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">hts_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.hts_close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.hts_idx_destroy">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">hts_idx_destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.hts_idx_destroy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.hts_itr_destroy">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">hts_itr_destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.hts_itr_destroy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="id0">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">hts_itr_destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.hts_itr_next">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">hts_itr_next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.hts_itr_next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.sam_index_load">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">sam_index_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.sam_index_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.sam_hdr_read">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">sam_hdr_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.sam_hdr_read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.sam_itr_querys">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">sam_itr_querys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.sam_itr_querys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.sam_read1">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">sam_read1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.sam_read1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_read1">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_read1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_read1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_init1">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_init1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_init1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_cigar2qlen">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_cigar2qlen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">int,</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[u32]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_cigar2qlen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_cigar2rlen">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_cigar2rlen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">int,</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[u32]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_cigar2rlen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_aux_get">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_aux_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj,</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[byte]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_aux_get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_aux2i">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_aux2i</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[u8]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_aux2i" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_aux2f">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_aux2f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[u8]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_aux2f" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_aux2A">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_aux2A</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[u8]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_aux2A" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_aux2Z">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_aux2Z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[u8]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_aux2Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_auxB_len">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_auxB_len</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[u8]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_auxB_len" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_auxB2i">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_auxB2i</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[u8],</span>&#160; <span class="pre">:</span> <span class="pre">u32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_auxB2i" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_auxB2f">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_auxB2f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[u8],</span>&#160; <span class="pre">:</span> <span class="pre">u32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_auxB2f" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_endpos">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_endpos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_endpos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.sam_hdr_destroy">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">sam_hdr_destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.sam_hdr_destroy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bam_destroy1">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bam_destroy1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bam_destroy1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_hdr_read">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_hdr_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_hdr_read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_read">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_unpack">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">i32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_unpack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_hdr_destroy">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_hdr_destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_hdr_destroy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_init">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_destroy">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_destroy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_variant_types">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_variant_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_variant_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_variant_type">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_variant_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">i32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_variant_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_is_snp">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_is_snp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_is_snp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_has_filter">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_has_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_has_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_fmt">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_fmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_fmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_info">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_fmt_id">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_fmt_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">i32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_fmt_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_info_id">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_info_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">i32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_info_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_format_values">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_format_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">i32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_format_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_hdr_id2int">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_hdr_id2int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">i32</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_hdr_id2int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="id1">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_has_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_hrec_format">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_hrec_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_hrec_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_clear">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_empty">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_dup">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_dup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_dup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.bcf_get_info_values">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">bcf_get_info_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj,</span>&#160; <span class="pre">:</span> <span class="pre">cobj,</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[byte],</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[cobj],</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[i32],</span>&#160; <span class="pre">:</span> <span class="pre">i32</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.bcf_get_info_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.hts_version">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">hts_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.hts_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.seq_get_htsfile_fp">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">seq_get_htsfile_fp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.seq_get_htsfile_fp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.seq_is_htsfile_cram">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">seq_is_htsfile_cram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.seq_is_htsfile_cram" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.seq_is_htsfile_bgzf">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">seq_is_htsfile_bgzf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.seq_is_htsfile_bgzf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.c_htslib.sam_itr_next">
+<span class="sig-prename descclassname"><span class="pre">bio.c_htslib.</span></span><span class="sig-name descname"><span class="pre">sam_itr_next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">cobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">cobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">cobj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.c_htslib.sam_itr_next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="fai.html" class="btn btn-neutral float-right" title="bio.fai" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="bwt.html" class="btn btn-neutral float-left" title="bio.bwt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019-2021, seq-lang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

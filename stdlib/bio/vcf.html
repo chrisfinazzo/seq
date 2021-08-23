@@ -1,0 +1,1301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>bio.vcf &mdash; Seq 0.10.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="bisect" href="../bisect.html" />
+    <link rel="prev" title="bio.types" href="types.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #333131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Seq
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#pre-built-binaries">Pre-built binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#compile-time-definitions">Compile-time definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/setup.html">Set-up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/primer.html">Language Primer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#printing">Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#literals">Literals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuples">Tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#containers">Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#assignments-and-operators">Assignments and operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuple-unpacking">Tuple unpacking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#control-flow">Control flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#conditionals">Conditionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#loops">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#comprehensions">Comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#exception-handling">Exception handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#variables-and-scoping">Variables and scoping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generics">Generics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generators">Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#foreign-function-interface-ffi">Foreign function interface (FFI)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#classes-and-types">Classes and types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#magic-methods">Magic methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#llvm-functions">LLVM functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#bio-specific-features">Bio-specific features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-types">Genomic types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-matching">Sequence matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-index-prefetching">Genomic index prefetching</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#other-features">Other features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#parallelism">Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#other-types">Other types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#calling-bwa-from-seq">Calling BWA from Seq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/workshop.html">Workshop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#code-listings">Code Listings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-1-reading-sequences-from-disk">Section 1: Reading sequences from disk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#full-code-listing">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-2-building-an-index">Section 2: Building an index</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section2-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-3-finding-k-mer-matches">Section 3: Finding k-mer matches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section3-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-4-smith-waterman-alignment-and-cigar-strings">Section 4: Smith-Waterman alignment and CIGAR strings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section4-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-5-pipelines">Section 5: Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#optional-parallelism">(Optional) Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section5-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-6-domain-specific-optimizations">Section 6: Domain-specific optimizations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section6-code">Full code listing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#subsequence-extraction">Subsequence extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-extraction">k-mer extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complementation">Reverse complementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-distance">k-mer Hamming distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-neighbors">k-mer Hamming neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-minimizer">k-mer minimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#de-bruijn-edge">de Bruijn edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#count-bases">Count bases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#spaced-seed-search">Spaced seed search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complement-palindrome">Reverse-complement palindrome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-fasta-fastq">Reading FASTA/FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-paired-end-fastq">Reading paired-end FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#parallel-fastq-processing">Parallel FASTQ processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-sam-bam-cram">Reading SAM/BAM/CRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#dna-to-protein-translation">DNA to protein translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-protein-sequences-from-fasta">Reading protein sequences from FASTA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../python.html">Calling Python from Seq</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#from-python-import"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">python</span> <span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#python"><code class="docutils literal notranslate"><span class="pre">&#64;python</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../embed.html">Calling Seq from C/C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../embed.html#converting-types">Converting types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build.html">Building from Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standard Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html">algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/heapsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.heapsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/insertionsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.insertionsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/pdqsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.pdqsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/qsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.qsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/strings.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.strings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/timsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.timsort</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">bio</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="align.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.align</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bam.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bam</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bed.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="block.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.block</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bwa.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bwt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_htslib.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.c_htslib</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fai.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fai</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fasta.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fasta</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fastq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fastq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmindex.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fmindex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intervals.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.intervals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="iter.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.iter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="kmer.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.kmer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="locus.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.locus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="prefetch.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.prefetch</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pseq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.pseq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="seq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.seq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.types</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.vcf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../bisect.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bisect</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collections.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">collections</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">functools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getopt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">getopt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gzip.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">gzip</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heapq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">heapq</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../internal/index.html">internal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../internal/__init_test__.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.__init_test__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/attributes.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.attributes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/box.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.box</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/c_stubs.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.c_stubs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/dlopen.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.dlopen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/file.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.file</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/gc.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.gc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/internal.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.internal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/khash.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.khash</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.python</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/sort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.sort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../internal/types/index.html">internal.types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/array.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/bool.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.bool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/byte.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.byte</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/collections/index.html">internal.types.collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/error.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/float.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/generator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.generator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/int.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/intn.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.intn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/optional.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.optional</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/ptr.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.ptr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/range.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/slice.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.slice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../internal/types/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.str</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../itertools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">itertools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">math</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">operator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os/index.html">os</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../os/path.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">os.path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pickle.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">pickle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">python</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">random</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sortedlist.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sortedlist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../statistics.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">statistics</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../string.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">string</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sys</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../threading.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">threading</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">time</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Seq</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Standard Library Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">bio</a> &raquo;</li>
+        
+      <li><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.vcf</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/stdlib/bio/vcf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-bio.vcf"></span><div class="section" id="bio-vcf">
+<h1><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.vcf</span></code><a class="headerlink" href="#bio-vcf" title="Permalink to this headline">¶</a></h1>
+<p>Source code: <a class="reference external" href="https://github.com/seq-lang/seq/blob/master/stdlib/bio/vcf.seq">bio/vcf.seq</a></p>
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_UN_STR">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_UN_STR</span></span><a class="headerlink" href="#bio.vcf.BCF_UN_STR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_UN_FLT">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_UN_FLT</span></span><a class="headerlink" href="#bio.vcf.BCF_UN_FLT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_UN_INFO">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_UN_INFO</span></span><a class="headerlink" href="#bio.vcf.BCF_UN_INFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_UN_SHR">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_UN_SHR</span></span><a class="headerlink" href="#bio.vcf.BCF_UN_SHR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_UN_FMT">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_UN_FMT</span></span><a class="headerlink" href="#bio.vcf.BCF_UN_FMT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_UN_IND">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_UN_IND</span></span><a class="headerlink" href="#bio.vcf.BCF_UN_IND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_UN_ALL">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_UN_ALL</span></span><a class="headerlink" href="#bio.vcf.BCF_UN_ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HL_FLT">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HL_FLT</span></span><a class="headerlink" href="#bio.vcf.BCF_HL_FLT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HL_INFO">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HL_INFO</span></span><a class="headerlink" href="#bio.vcf.BCF_HL_INFO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HL_FMT">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HL_FMT</span></span><a class="headerlink" href="#bio.vcf.BCF_HL_FMT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HL_CTG">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HL_CTG</span></span><a class="headerlink" href="#bio.vcf.BCF_HL_CTG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HL_STR">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HL_STR</span></span><a class="headerlink" href="#bio.vcf.BCF_HL_STR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HL_GEN">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HL_GEN</span></span><a class="headerlink" href="#bio.vcf.BCF_HL_GEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HT_FLAG">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HT_FLAG</span></span><a class="headerlink" href="#bio.vcf.BCF_HT_FLAG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HT_INT">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HT_INT</span></span><a class="headerlink" href="#bio.vcf.BCF_HT_INT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HT_REAL">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HT_REAL</span></span><a class="headerlink" href="#bio.vcf.BCF_HT_REAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_HT_STR">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_HT_STR</span></span><a class="headerlink" href="#bio.vcf.BCF_HT_STR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_VL_FIXED">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_VL_FIXED</span></span><a class="headerlink" href="#bio.vcf.BCF_VL_FIXED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_VL_VAR">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_VL_VAR</span></span><a class="headerlink" href="#bio.vcf.BCF_VL_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_VL_A">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_VL_A</span></span><a class="headerlink" href="#bio.vcf.BCF_VL_A" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_VL_G">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_VL_G</span></span><a class="headerlink" href="#bio.vcf.BCF_VL_G" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_VL_R">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_VL_R</span></span><a class="headerlink" href="#bio.vcf.BCF_VL_R" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_DT_ID">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_DT_ID</span></span><a class="headerlink" href="#bio.vcf.BCF_DT_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_DT_CTG">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_DT_CTG</span></span><a class="headerlink" href="#bio.vcf.BCF_DT_CTG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_DT_SAMPLE">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_DT_SAMPLE</span></span><a class="headerlink" href="#bio.vcf.BCF_DT_SAMPLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_BT_NULL">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_BT_NULL</span></span><a class="headerlink" href="#bio.vcf.BCF_BT_NULL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_BT_INT8">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_BT_INT8</span></span><a class="headerlink" href="#bio.vcf.BCF_BT_INT8" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_BT_INT16">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_BT_INT16</span></span><a class="headerlink" href="#bio.vcf.BCF_BT_INT16" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_BT_INT32">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_BT_INT32</span></span><a class="headerlink" href="#bio.vcf.BCF_BT_INT32" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_BT_FLOAT">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_BT_FLOAT</span></span><a class="headerlink" href="#bio.vcf.BCF_BT_FLOAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_BT_CHAR">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_BT_CHAR</span></span><a class="headerlink" href="#bio.vcf.BCF_BT_CHAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.BCF_AUX_NONE">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF_AUX_NONE</span></span><a class="headerlink" href="#bio.vcf.BCF_AUX_NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.INT8_MIN">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">INT8_MIN</span></span><a class="headerlink" href="#bio.vcf.INT8_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.INT16_MIN">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">INT16_MIN</span></span><a class="headerlink" href="#bio.vcf.INT16_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.INT32_MIN">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">INT32_MIN</span></span><a class="headerlink" href="#bio.vcf.INT32_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_int8_vector_end">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_int8_vector_end</span></span><a class="headerlink" href="#bio.vcf.bcf_int8_vector_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_int16_vector_end">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_int16_vector_end</span></span><a class="headerlink" href="#bio.vcf.bcf_int16_vector_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_int32_vector_end">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_int32_vector_end</span></span><a class="headerlink" href="#bio.vcf.bcf_int32_vector_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_str_vector_end">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_str_vector_end</span></span><a class="headerlink" href="#bio.vcf.bcf_str_vector_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_int8_missing">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_int8_missing</span></span><a class="headerlink" href="#bio.vcf.bcf_int8_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_int16_missing">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_int16_missing</span></span><a class="headerlink" href="#bio.vcf.bcf_int16_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_int32_missing">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_int32_missing</span></span><a class="headerlink" href="#bio.vcf.bcf_int32_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_float_missing">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_float_missing</span></span><a class="headerlink" href="#bio.vcf.bcf_float_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_float_vector_end">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_float_vector_end</span></span><a class="headerlink" href="#bio.vcf.bcf_float_vector_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_str_missing">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_str_missing</span></span><a class="headerlink" href="#bio.vcf.bcf_str_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.ptr_off">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">ptr_off</span></span><span class="sig-name descname"><span class="pre">[T]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">byte</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byte_offset</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.ptr_off" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.char_pp">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">char_pp</span></span><a class="headerlink" href="#bio.vcf.char_pp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.char_p">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">char_p</span></span><a class="headerlink" href="#bio.vcf.char_p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.check_header_id">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">check_header_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h1_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.check_header_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.is_gt_fmt">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">is_gt_fmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.is_gt_fmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_float_is_missing">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_float_is_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.bcf_float_is_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_float_is_vector_end">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_float_is_vector_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.bcf_float_is_vector_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_gt_allele">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_gt_allele</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.bcf_gt_allele" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderMetaData">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFHeaderMetaData</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderMetaData" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderMetaData.type_code">
+<span class="sig-name descname"><span class="pre">type_code</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderMetaData.type_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_type_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderContigs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFHeaderContigs</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderContigs" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderSamples">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFHeaderSamples</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderSamples" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.METADATA_TYPES">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">METADATA_TYPES</span></span><a class="headerlink" href="#bio.vcf.METADATA_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFHeaderRecord</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.hdr_type">
+<span class="sig-name descname"><span class="pre">hdr_type</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.hdr_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.key">
+<span class="sig-name descname"><span class="pre">key</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.key" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.value">
+<span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.attrs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hrec</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hrec_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.iterkeys">
+<span class="sig-name descname"><span class="pre">iterkeys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.iterkeys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.itervalues">
+<span class="sig-name descname"><span class="pre">itervalues</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.itervalues" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeaderRecord.iteritems">
+<span class="sig-name descname"><span class="pre">iteritems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.BCFHeaderRecord.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFHeader</span></span><a class="headerlink" href="#bio.vcf.BCFHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeader.info">
+<span class="sig-name descname"><span class="pre">info</span></span><a class="headerlink" href="#bio.vcf.BCFHeader.info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeader.filters">
+<span class="sig-name descname"><span class="pre">filters</span></span><a class="headerlink" href="#bio.vcf.BCFHeader.filters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeader.formats">
+<span class="sig-name descname"><span class="pre">formats</span></span><a class="headerlink" href="#bio.vcf.BCFHeader.formats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeader.contigs">
+<span class="sig-name descname"><span class="pre">contigs</span></span><a class="headerlink" href="#bio.vcf.BCFHeader.contigs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFHeader.samples">
+<span class="sig-name descname"><span class="pre">samples</span></span><a class="headerlink" href="#bio.vcf.BCFHeader.samples" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.VALUE_TYPES">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VALUE_TYPES</span></span><a class="headerlink" href="#bio.vcf.VALUE_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFMetadata">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFMetadata</span></span><a class="headerlink" href="#bio.vcf.BCFMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFMetadata.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#bio.vcf.BCFMetadata.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFMetadata.bcf_type">
+<span class="sig-name descname"><span class="pre">bcf_type</span></span><a class="headerlink" href="#bio.vcf.BCFMetadata.bcf_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFMetadata.record">
+<span class="sig-name descname"><span class="pre">record</span></span><a class="headerlink" href="#bio.vcf.BCFMetadata.record" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFMetadata.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#bio.vcf.BCFMetadata.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_type_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFAux">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFAux</span></span><a class="headerlink" href="#bio.vcf.BCFAux" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFAux.val">
+<span class="sig-name descname"><span class="pre">val</span></span><a class="headerlink" href="#bio.vcf.BCFAux.val" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFAux.arr">
+<span class="sig-name descname"><span class="pre">arr</span></span><a class="headerlink" href="#bio.vcf.BCFAux.arr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFAux.type_code">
+<span class="sig-name descname"><span class="pre">type_code</span></span><a class="headerlink" href="#bio.vcf.BCFAux.type_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFAux.is_array">
+<span class="sig-name descname"><span class="pre">is_array</span></span><a class="headerlink" href="#bio.vcf.BCFAux.is_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_get_value_count">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_get_value_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h1_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.bcf_get_value_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_array_to_object">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_array_to_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">cobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_code</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalar</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.bcf_array_to_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.bcf_info_get_value">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">bcf_info_get_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_info_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.bcf_info_get_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.try_unpack">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">try_unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">i32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.try_unpack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordInfo">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCFRecordInfo</span></span><a class="headerlink" href="#bio.vcf.VCFRecordInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordInfo.get_int">
+<span class="sig-name descname"><span class="pre">get_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.VCFRecordInfo.get_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordInfo.get_ints">
+<span class="sig-name descname"><span class="pre">get_ints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.VCFRecordInfo.get_ints" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordInfo.get_float">
+<span class="sig-name descname"><span class="pre">get_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.VCFRecordInfo.get_float" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordInfo.get_floats">
+<span class="sig-name descname"><span class="pre">get_floats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.VCFRecordInfo.get_floats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordInfo.get_str">
+<span class="sig-name descname"><span class="pre">get_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.VCFRecordInfo.get_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordInfo.get_flag">
+<span class="sig-name descname"><span class="pre">get_flag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.VCFRecordInfo.get_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordSample">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCFRecordSample</span></span><a class="headerlink" href="#bio.vcf.VCFRecordSample" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordSample.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#bio.vcf.VCFRecordSample.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordSample.alleles">
+<span class="sig-name descname"><span class="pre">alleles</span></span><a class="headerlink" href="#bio.vcf.VCFRecordSample.alleles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordSamples">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCFRecordSamples</span></span><a class="headerlink" href="#bio.vcf.VCFRecordSamples" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordFormat">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCFRecordFormat</span></span><a class="headerlink" href="#bio.vcf.VCFRecordFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecordFilter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCFRecordFilter</span></span><a class="headerlink" href="#bio.vcf.VCFRecordFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCFRecord</span></span><a class="headerlink" href="#bio.vcf.VCFRecord" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.info">
+<span class="sig-name descname"><span class="pre">info</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.n_info">
+<span class="sig-name descname"><span class="pre">n_info</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.n_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.chrom">
+<span class="sig-name descname"><span class="pre">chrom</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.chrom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.contig">
+<span class="sig-name descname"><span class="pre">contig</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.contig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.pos">
+<span class="sig-name descname"><span class="pre">pos</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.pos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.qual">
+<span class="sig-name descname"><span class="pre">qual</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.qual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.ref">
+<span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.alts">
+<span class="sig-name descname"><span class="pre">alts</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.alts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.VCFRecord.rlen">
+<span class="sig-name descname"><span class="pre">rlen</span></span><a class="headerlink" href="#bio.vcf.VCFRecord.rlen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bcf1</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf1_t</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcf_hdr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><span class="pre">_bcf_hdr_t</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq class">
+<dt class="sig sig-object seq" id="bio.vcf.BCFReader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCFReader</span></span><a class="headerlink" href="#bio.vcf.BCFReader" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Properties:</strong></p>
+<blockquote>
+<div><dl class="seq attribute">
+<dt class="sig sig-object seq" id="bio.vcf.BCFReader._bcf_hdr">
+<span class="sig-name descname"><span class="pre">_bcf_hdr</span></span><a class="headerlink" href="#bio.vcf.BCFReader._bcf_hdr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unpack_all</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__enter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__exit__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="bio.vcf.BCFReader.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.BCFReader.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="bio.vcf.VCFReader">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCFReader</span></span><a class="headerlink" href="#bio.vcf.VCFReader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.BCF">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">BCF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unpack_all</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.BCF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="bio.vcf.VCF">
+<span class="sig-prename descclassname"><span class="pre">bio.vcf.</span></span><span class="sig-name descname"><span class="pre">VCF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unpack_all</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bio.vcf.VCF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../bisect.html" class="btn btn-neutral float-right" title="bisect" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="types.html" class="btn btn-neutral float-left" title="bio.types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019-2021, seq-lang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

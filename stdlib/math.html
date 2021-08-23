@@ -1,0 +1,800 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>math &mdash; Seq 0.10.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="operator" href="operator.html" />
+    <link rel="prev" title="itertools" href="itertools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #333131" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Seq
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#pre-built-binaries">Pre-built binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#compile-time-definitions">Compile-time definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/setup.html">Set-up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/setup.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/setup.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/primer.html">Language Primer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#printing">Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#literals">Literals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#tuples">Tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#containers">Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#assignments-and-operators">Assignments and operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#tuple-unpacking">Tuple unpacking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#control-flow">Control flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#conditionals">Conditionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#loops">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#comprehensions">Comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#exception-handling">Exception handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#variables-and-scoping">Variables and scoping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#generics">Generics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#generators">Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#foreign-function-interface-ffi">Foreign function interface (FFI)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/primer.html#classes-and-types">Classes and types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#magic-methods">Magic methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/primer.html#llvm-functions">LLVM functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/tutorial.html#bio-specific-features">Bio-specific features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#genomic-types">Genomic types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#sequence-matching">Sequence matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#genomic-index-prefetching">Genomic index prefetching</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/tutorial.html#other-features">Other features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#parallelism">Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/tutorial.html#other-types">Other types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/tutorial.html#calling-bwa-from-seq">Calling BWA from Seq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/workshop.html">Workshop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#code-listings">Code Listings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#section-1-reading-sequences-from-disk">Section 1: Reading sequences from disk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/workshop.html#full-code-listing">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#section-2-building-an-index">Section 2: Building an index</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/workshop.html#section2-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#section-3-finding-k-mer-matches">Section 3: Finding k-mer matches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/workshop.html#section3-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#section-4-smith-waterman-alignment-and-cigar-strings">Section 4: Smith-Waterman alignment and CIGAR strings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/workshop.html#section4-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#section-5-pipelines">Section 5: Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/workshop.html#optional-parallelism">(Optional) Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/workshop.html#section5-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial/workshop.html#section-6-domain-specific-optimizations">Section 6: Domain-specific optimizations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../tutorial/workshop.html#section6-code">Full code listing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cookbook.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#subsequence-extraction">Subsequence extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#k-mer-extraction">k-mer extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#reverse-complementation">Reverse complementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#k-mer-hamming-distance">k-mer Hamming distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#k-mer-hamming-neighbors">k-mer Hamming neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#k-mer-minimizer">k-mer minimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#de-bruijn-edge">de Bruijn edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#count-bases">Count bases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#spaced-seed-search">Spaced seed search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#reverse-complement-palindrome">Reverse-complement palindrome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#reading-fasta-fastq">Reading FASTA/FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#reading-paired-end-fastq">Reading paired-end FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#parallel-fastq-processing">Parallel FASTQ processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#reading-sam-bam-cram">Reading SAM/BAM/CRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#dna-to-protein-translation">DNA to protein translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cookbook.html#reading-protein-sequences-from-fasta">Reading protein sequences from FASTA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">Calling Python from Seq</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python.html#from-python-import"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">python</span> <span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python.html#python"><code class="docutils literal notranslate"><span class="pre">&#64;python</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../embed.html">Calling Seq from C/C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../embed.html#converting-types">Converting types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../build.html">Building from Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../build.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build.html#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Standard Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="algorithms/index.html">algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="algorithms/heapsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.heapsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithms/insertionsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.insertionsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithms/pdqsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.pdqsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithms/qsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.qsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithms/strings.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.strings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="algorithms/timsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.timsort</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bio/index.html">bio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bio/align.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.align</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/bam.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bam</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/bed.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/block.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.block</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/bwa.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/bwt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/c_htslib.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.c_htslib</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/fai.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fai</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/fasta.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fasta</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/fastq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fastq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/fmindex.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fmindex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/intervals.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.intervals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/iter.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.iter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/kmer.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.kmer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/locus.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.locus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/prefetch.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.prefetch</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/pseq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.pseq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/seq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.seq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/types.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bio/vcf.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.vcf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bisect.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bisect</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="collections.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">collections</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="functools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">functools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="getopt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">getopt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="gzip.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">gzip</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heapq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">heapq</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="internal/index.html">internal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="internal/__init_test__.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.__init_test__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/attributes.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.attributes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/box.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.box</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/c_stubs.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.c_stubs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/dlopen.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.dlopen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/file.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.file</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/gc.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.gc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/internal.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.internal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/khash.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.khash</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.python</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/sort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.sort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal/types/index.html">internal.types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/array.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/bool.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.bool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/byte.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.byte</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/collections/index.html">internal.types.collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/error.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/float.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/generator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.generator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/int.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/intn.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.intn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/optional.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.optional</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/ptr.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.ptr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/range.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/slice.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.slice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="internal/types/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.str</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="itertools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">itertools</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">math</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="operator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">operator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="os/index.html">os</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="os/path.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">os.path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pickle.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">pickle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">python</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="random.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">random</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sortedlist.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sortedlist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">statistics</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="string.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">string</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sys.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sys</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="threading.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">threading</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">time</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Seq</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Standard Library Reference</a> &raquo;</li>
+        
+      <li><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">math</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/stdlib/math.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-..math"></span><div class="section" id="math">
+<h1><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">math</span></code><a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h1>
+<p>Source code: <a class="reference external" href="https://github.com/seq-lang/seq/blob/master/stdlib/./math.seq">math.seq</a></p>
+<dl class="seq data">
+<dt class="sig sig-object seq" id="math.e">
+<span id="..math.e"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">e</span></span><a class="headerlink" href="#math.e" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="math.pi">
+<span id="..math.pi"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">pi</span></span><a class="headerlink" href="#math.pi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="math.tau">
+<span id="..math.tau"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">tau</span></span><a class="headerlink" href="#math.tau" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="math.inf">
+<span id="..math.inf"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">inf</span></span><a class="headerlink" href="#math.inf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq data">
+<dt class="sig sig-object seq" id="math.nan">
+<span id="..math.nan"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">nan</span></span><a class="headerlink" href="#math.nan" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.factorial">
+<span id="..math.factorial"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">factorial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.factorial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.isnan">
+<span id="..math.isnan"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">isnan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.isnan" title="Permalink to this definition">¶</a></dt>
+<dd><p>isnan(float) -&gt; bool</p>
+<p>Return True if float arg is a NaN, else False.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.isinf">
+<span id="..math.isinf"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">isinf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.isinf" title="Permalink to this definition">¶</a></dt>
+<dd><p>isinf(float) -&gt; bool:</p>
+<p>Return True if float arg is an INF, else False.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.isfinite">
+<span id="..math.isfinite"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">isfinite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.isfinite" title="Permalink to this definition">¶</a></dt>
+<dd><p>isfinite(float) -&gt; bool</p>
+<p>Return True if x is neither an infinity nor a NaN,
+and False otherwise.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.ceil">
+<span id="..math.ceil"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">ceil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.ceil" title="Permalink to this definition">¶</a></dt>
+<dd><p>ceil(float) -&gt; float</p>
+<p>Return the ceiling of x as an Integral.
+This is the smallest integer &gt;= x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.floor">
+<span id="..math.floor"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>floor(float) -&gt; float</p>
+<p>Return the floor of x as an Integral.
+This is the largest integer &lt;= x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.fabs">
+<span id="..math.fabs"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">fabs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.fabs" title="Permalink to this definition">¶</a></dt>
+<dd><p>fabs(float) -&gt; float</p>
+<p>Returns the absolute value of a floating point number.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.fmod">
+<span id="..math.fmod"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">fmod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.fmod" title="Permalink to this definition">¶</a></dt>
+<dd><p>fmod(float, float) -&gt; float</p>
+<p>Returns the remainder of x divided by y.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.exp">
+<span id="..math.exp"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.exp" title="Permalink to this definition">¶</a></dt>
+<dd><p>exp(float) -&gt; float</p>
+<p>Returns the value of e raised to the xth power.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.expm1">
+<span id="..math.expm1"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">expm1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.expm1" title="Permalink to this definition">¶</a></dt>
+<dd><p>expm1(float) -&gt; float</p>
+<p>Return e raised to the power x, minus 1. expm1 provides
+a way to compute this quantity to full precision.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.ldexp">
+<span id="..math.ldexp"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">ldexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.ldexp" title="Permalink to this definition">¶</a></dt>
+<dd><p>ldexp(float, int) -&gt; float</p>
+<p>Returns x multiplied by 2 raised to the power of exponent.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.log">
+<span id="..math.log"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>log(float) -&gt; float</p>
+<p>Returns the natural logarithm (base-e logarithm) of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.log2">
+<span id="..math.log2"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">log2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.log2" title="Permalink to this definition">¶</a></dt>
+<dd><p>log2(float) -&gt; float</p>
+<p>Return the base-2 logarithm of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.log10">
+<span id="..math.log10"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">log10</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.log10" title="Permalink to this definition">¶</a></dt>
+<dd><p>log10(float) -&gt; float</p>
+<p>Returns the common logarithm (base-10 logarithm) of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.degrees">
+<span id="..math.degrees"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.degrees" title="Permalink to this definition">¶</a></dt>
+<dd><p>degrees(float) -&gt; float</p>
+<p>Convert angle x from radians to degrees.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.radians">
+<span id="..math.radians"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">radians</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.radians" title="Permalink to this definition">¶</a></dt>
+<dd><p>radians(float) -&gt; float</p>
+<p>Convert angle x from degrees to radians.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.sqrt">
+<span id="..math.sqrt"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.sqrt" title="Permalink to this definition">¶</a></dt>
+<dd><p>sqrt(float) -&gt; float</p>
+<p>Returns the square root of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.pow">
+<span id="..math.pow"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">pow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.pow" title="Permalink to this definition">¶</a></dt>
+<dd><p>pow(float, float) -&gt; float</p>
+<p>Returns x raised to the power of y.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.acos">
+<span id="..math.acos"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">acos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.acos" title="Permalink to this definition">¶</a></dt>
+<dd><p>acos(float) -&gt; float</p>
+<p>Returns the arc cosine of x in radians.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.asin">
+<span id="..math.asin"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">asin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.asin" title="Permalink to this definition">¶</a></dt>
+<dd><p>asin(float) -&gt; float</p>
+<p>Returns the arc sine of x in radians.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.atan">
+<span id="..math.atan"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">atan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.atan" title="Permalink to this definition">¶</a></dt>
+<dd><p>atan(float) -&gt; float</p>
+<p>Returns the arc tangent of x in radians.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.atan2">
+<span id="..math.atan2"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">atan2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.atan2" title="Permalink to this definition">¶</a></dt>
+<dd><p>atan2(float, float) -&gt; float</p>
+<p>Returns the arc tangent in radians of y/x based
+on the signs of both values to determine the
+correct quadrant.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.cos">
+<span id="..math.cos"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">cos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.cos" title="Permalink to this definition">¶</a></dt>
+<dd><p>cos(float) -&gt; float</p>
+<p>Returns the cosine of a radian angle x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.sin">
+<span id="..math.sin"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.sin" title="Permalink to this definition">¶</a></dt>
+<dd><p>sin(float) -&gt; float</p>
+<p>Returns the sine of a radian angle x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.hypot">
+<span id="..math.hypot"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">hypot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.hypot" title="Permalink to this definition">¶</a></dt>
+<dd><p>hypot(float, float) -&gt; float</p>
+<p>Return the Euclidean norm.
+This is the length of the vector from the
+origin to point (x, y).</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.tan">
+<span id="..math.tan"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">tan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.tan" title="Permalink to this definition">¶</a></dt>
+<dd><p>tan(float) -&gt; float</p>
+<p>Return the tangent of a radian angle x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.cosh">
+<span id="..math.cosh"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">cosh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.cosh" title="Permalink to this definition">¶</a></dt>
+<dd><p>cosh(float) -&gt; float</p>
+<p>Returns the hyperbolic cosine of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.sinh">
+<span id="..math.sinh"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">sinh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.sinh" title="Permalink to this definition">¶</a></dt>
+<dd><p>sinh(float) -&gt; float</p>
+<p>Returns the hyperbolic sine of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.tanh">
+<span id="..math.tanh"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.tanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>tanh(float) -&gt; float</p>
+<p>Returns the hyperbolic tangent of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.acosh">
+<span id="..math.acosh"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">acosh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.acosh" title="Permalink to this definition">¶</a></dt>
+<dd><p>acosh(float) -&gt; float</p>
+<p>Return the inverse hyperbolic cosine of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.asinh">
+<span id="..math.asinh"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">asinh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.asinh" title="Permalink to this definition">¶</a></dt>
+<dd><p>asinh(float) -&gt; float</p>
+<p>Return the inverse hyperbolic sine of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.atanh">
+<span id="..math.atanh"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">atanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.atanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>atanh(float) -&gt; float</p>
+<p>Return the inverse hyperbolic tangent of x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.copysign">
+<span id="..math.copysign"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">copysign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.copysign" title="Permalink to this definition">¶</a></dt>
+<dd><p>copysign(float, float) -&gt; float</p>
+<p>Return a float with the magnitude (absolute value) of
+x but the sign of y.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.log1p">
+<span id="..math.log1p"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">log1p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.log1p" title="Permalink to this definition">¶</a></dt>
+<dd><p>log1p(float) -&gt; float</p>
+<p>Return the natural logarithm of 1+x (base e).</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.trunc">
+<span id="..math.trunc"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">trunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.trunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>trunc(float) -&gt; float</p>
+<p>Return the Real value x truncated to an Integral
+(usually an integer).</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.erf">
+<span id="..math.erf"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">erf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.erf" title="Permalink to this definition">¶</a></dt>
+<dd><p>erf(float) -&gt; float</p>
+<p>Return the error function at x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.erfc">
+<span id="..math.erfc"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">erfc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.erfc" title="Permalink to this definition">¶</a></dt>
+<dd><p>erfc(float) -&gt; float</p>
+<p>Return the complementary error function at x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.gamma">
+<span id="..math.gamma"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>gamma(float) -&gt; float</p>
+<p>Return the Gamma function at x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.lgamma">
+<span id="..math.lgamma"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">lgamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.lgamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>lgamma(float) -&gt; float</p>
+<p>Return the natural logarithm of
+the absolute value of the Gamma function at x.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.remainder">
+<span id="..math.remainder"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">remainder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.remainder" title="Permalink to this definition">¶</a></dt>
+<dd><p>remainder(float, float) -&gt; float</p>
+<p>Return the IEEE 754-style remainder of x with respect to y.
+For finite x and finite nonzero y, this is the difference
+x - n*y, where n is the closest integer to the exact value
+of the quotient x / y. If x / y is exactly halfway between
+two consecutive integers, the nearest even integer is used
+for n.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.gcd">
+<span id="..math.gcd"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">gcd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.gcd" title="Permalink to this definition">¶</a></dt>
+<dd><p>gcd(float, float) -&gt; float</p>
+<p>returns greatest common divisor of x and y.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.frexp">
+<span id="..math.frexp"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">frexp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.frexp" title="Permalink to this definition">¶</a></dt>
+<dd><p>frexp(float) -&gt; Tuple[float, int]</p>
+<p>The returned value is the mantissa and the integer pointed
+to by exponent is the exponent. The resultant value is
+x = mantissa * 2 ^ exponent.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.modf">
+<span id="..math.modf"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">modf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.modf" title="Permalink to this definition">¶</a></dt>
+<dd><p>modf(float) -&gt; Tuple[float, float]</p>
+<p>The returned value is the fraction component (part after
+the decimal), and sets integer to the integer component.</p>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="math.isclose">
+<span id="..math.isclose"></span><span class="sig-prename descclassname"><span class="pre">math.</span></span><span class="sig-name descname"><span class="pre">isclose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#math.isclose" title="Permalink to this definition">¶</a></dt>
+<dd><p>isclose(float, float) -&gt; bool</p>
+<p>Return True if a is close in value to b, and False otherwise.
+For the values to be considered close, the difference between them
+must be smaller than at least one of the tolerances.</p>
+<p>Unlike python, rel_tol and abs_tol are set to default for now.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="operator.html" class="btn btn-neutral float-right" title="operator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="itertools.html" class="btn btn-neutral float-left" title="itertools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019-2021, seq-lang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

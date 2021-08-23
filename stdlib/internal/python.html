@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>internal.python &mdash; Seq 0.10.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="internal.sort" href="sort.html" />
+    <link rel="prev" title="internal.khash" href="khash.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #333131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Seq
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#install">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#pre-built-binaries">Pre-built binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro.html#building-from-source">Building from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intro.html#compile-time-definitions">Compile-time definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/setup.html">Set-up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/setup.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/primer.html">Language Primer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#printing">Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#literals">Literals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuples">Tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#containers">Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#assignments-and-operators">Assignments and operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#tuple-unpacking">Tuple unpacking</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#control-flow">Control flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#conditionals">Conditionals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#loops">Loops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#comprehensions">Comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#exception-handling">Exception handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#variables-and-scoping">Variables and scoping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#imports">Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generics">Generics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#generators">Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#foreign-function-interface-ffi">Foreign function interface (FFI)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/primer.html#classes-and-types">Classes and types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#magic-methods">Magic methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/primer.html#llvm-functions">LLVM functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#bio-specific-features">Bio-specific features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-types">Genomic types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-matching">Sequence matching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#pipelines">Pipelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#genomic-index-prefetching">Genomic index prefetching</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#other-features">Other features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#parallelism">Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#type-extensions">Type extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/tutorial.html#other-types">Other types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/tutorial.html#calling-bwa-from-seq">Calling BWA from Seq</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial/workshop.html">Workshop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#code-listings">Code Listings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-1-reading-sequences-from-disk">Section 1: Reading sequences from disk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#full-code-listing">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-2-building-an-index">Section 2: Building an index</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section2-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-3-finding-k-mer-matches">Section 3: Finding k-mer matches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section3-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-4-smith-waterman-alignment-and-cigar-strings">Section 4: Smith-Waterman alignment and CIGAR strings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section4-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-5-pipelines">Section 5: Pipelines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#optional-parallelism">(Optional) Parallelism</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section5-code">Full code listing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial/workshop.html#section-6-domain-specific-optimizations">Section 6: Domain-specific optimizations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../tutorial/workshop.html#section6-code">Full code listing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cookbook.html">Cookbook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#subsequence-extraction">Subsequence extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-extraction">k-mer extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complementation">Reverse complementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-distance">k-mer Hamming distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-hamming-neighbors">k-mer Hamming neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#k-mer-minimizer">k-mer minimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#de-bruijn-edge">de Bruijn edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#count-bases">Count bases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#spaced-seed-search">Spaced seed search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reverse-complement-palindrome">Reverse-complement palindrome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#sequence-alignment">Sequence alignment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-fasta-fastq">Reading FASTA/FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-paired-end-fastq">Reading paired-end FASTQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#parallel-fastq-processing">Parallel FASTQ processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-sam-bam-cram">Reading SAM/BAM/CRAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#dna-to-protein-translation">DNA to protein translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cookbook.html#reading-protein-sequences-from-fasta">Reading protein sequences from FASTA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../python.html">Calling Python from Seq</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#from-python-import"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">python</span> <span class="pre">import</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python.html#python"><code class="docutils literal notranslate"><span class="pre">&#64;python</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../embed.html">Calling Seq from C/C++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../embed.html#converting-types">Converting types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../build.html">Building from Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../build.html#build">Build</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Standard Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../algorithms/index.html">algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/heapsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.heapsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/insertionsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.insertionsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/pdqsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.pdqsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/qsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.qsort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/strings.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.strings</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../algorithms/timsort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">algorithms.timsort</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../bio/index.html">bio</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../bio/align.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.align</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/bam.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bam</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/bed.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/block.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.block</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/bwa.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwa</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/bwt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.bwt</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/c_htslib.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.c_htslib</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/fai.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fai</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/fasta.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fasta</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/fastq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fastq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/fmindex.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.fmindex</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/intervals.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.intervals</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/iter.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.iter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/kmer.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.kmer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/locus.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.locus</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/prefetch.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.prefetch</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/pseq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.pseq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/seq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.seq</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/types.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bio/vcf.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bio.vcf</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../bisect.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">bisect</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collections.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">collections</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">functools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getopt.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">getopt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gzip.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">gzip</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heapq.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">heapq</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">internal</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="__init_test__.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.__init_test__</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="attributes.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.attributes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="box.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.box</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="builtin.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.builtin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="c_stubs.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.c_stubs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="dlopen.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.dlopen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="file.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.file</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="gc.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.gc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="internal.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.internal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="khash.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.khash</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.python</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="sort.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.sort</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.str</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="types/index.html">internal.types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="types/array.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.array</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/bool.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.bool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/byte.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.byte</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/collections/index.html">internal.types.collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/error.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.error</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/float.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.float</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/generator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.generator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/int.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.int</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/intn.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.intn</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/optional.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.optional</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/ptr.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.ptr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/range.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.range</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/slice.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.slice</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types/str.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.types.str</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../itertools.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">itertools</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">math</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operator.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">operator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os/index.html">os</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../os/path.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">os.path</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pickle.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">pickle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">python</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../random.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">random</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sortedlist.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sortedlist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../statistics.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">statistics</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../string.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">string</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sys.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">sys</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../threading.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">threading</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../time.html"><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">time</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Seq</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Standard Library Reference</a> &raquo;</li>
+        
+          <li><a href="index.html">internal</a> &raquo;</li>
+        
+      <li><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.python</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/stdlib/internal/python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-internal.python"></span><div class="section" id="internal-python">
+<h1><code class="xref seq seq-mod docutils literal notranslate"><span class="pre">internal.python</span></code><a class="headerlink" href="#internal-python" title="Permalink to this headline">¶</a></h1>
+<p>Source code: <a class="reference external" href="https://github.com/seq-lang/seq/blob/master/stdlib/internal/python.seq">internal/python.seq</a></p>
+<dl class="seq data">
+<dt class="sig sig-object seq" id="internal.python.LD">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">LD</span></span><a class="headerlink" href="#internal.python.LD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyUnicode_AsEncodedString">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyUnicode_AsEncodedString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyUnicode_AsEncodedString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyBytes_AsString">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyBytes_AsString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyBytes_AsString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyErr_Fetch">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyErr_Fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">Ptr[cobj],</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[cobj],</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[cobj]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyErr_Fetch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_GetAttrString">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_GetAttrString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_GetAttrString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_GetAttr">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_GetAttr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_GetAttr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_Str">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_Str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_Str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyRun_SimpleString">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyRun_SimpleString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyRun_SimpleString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.Py_IncRef">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">Py_IncRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.Py_IncRef" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.Py_DecRef">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">Py_DecRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.Py_DecRef" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_Call">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_Call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_Call" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_SetAttrString">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_SetAttrString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_SetAttrString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_Length">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_Length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_Length" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.Py_Initialize">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">Py_Initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.Py_Initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyImport_ImportModule">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyImport_ImportModule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyImport_ImportModule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyLong_FromLong">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyLong_FromLong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyLong_FromLong" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyLong_AsLong">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyLong_AsLong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyLong_AsLong" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyFloat_FromDouble">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyFloat_FromDouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">float</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyFloat_FromDouble" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyFloat_AsDouble">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyFloat_AsDouble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyFloat_AsDouble" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyBool_FromLong">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyBool_FromLong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyBool_FromLong" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_IsTrue">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_IsTrue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_IsTrue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyUnicode_DecodeFSDefaultAndSize">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyUnicode_DecodeFSDefaultAndSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyUnicode_DecodeFSDefaultAndSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyTuple_New">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyTuple_New</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyTuple_New" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyTuple_SetItem">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyTuple_SetItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyTuple_SetItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyTuple_GetItem">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyTuple_GetItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyTuple_GetItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyList_New">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyList_New</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyList_New" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyList_SetItem">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyList_SetItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyList_SetItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyList_GetItem">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyList_GetItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">int</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyList_GetItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PySet_New">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PySet_New</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PySet_New" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PySet_Add">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PySet_Add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PySet_Add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyDict_New">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyDict_New</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyDict_New" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyDict_SetItem">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyDict_SetItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em>, <em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyDict_SetItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyDict_Next">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyDict_Next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj,</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[int],</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[cobj],</span>&#160; <span class="pre">:</span> <span class="pre">Ptr[cobj]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyDict_Next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyObject_GetIter">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyObject_GetIter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyObject_GetIter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.PyIter_Next">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">PyIter_Next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">:</span> <span class="pre">cobj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.PyIter_Next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.init">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.ensure_initialized">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">ensure_initialized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.ensure_initialized" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.pyobj">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">pyobj</span></span><a class="headerlink" href="#internal.python.pyobj" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Ptr</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#internal.python.byte" title="internal.python.byte"><span class="pre">byte</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__getitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__add__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__setitem__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.str" title="internal.python.str"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__len__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__iter__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<p><strong>Methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq" id="internal.python.pyobj.to_str">
+<span class="sig-name descname"><span class="pre">to_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.str" title="internal.python.str"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.str" title="internal.python.str"><span class="pre">str</span></a></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.pyobj.to_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="internal.python.pyobj.exc_check">
+<span class="sig-name descname"><span class="pre">exc_check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.pyobj.exc_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="internal.python.pyobj.exc_wrap">
+<span class="sig-name descname"><span class="pre">exc_wrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_retval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.pyobj.exc_wrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="internal.python.pyobj.incref">
+<span class="sig-name descname"><span class="pre">incref</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.pyobj.incref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="internal.python.pyobj.decref">
+<span class="sig-name descname"><span class="pre">decref</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.pyobj.decref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq" id="internal.python.pyobj.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-name descname"><span class="pre">[T]</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.pyobj.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.none">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">none</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.none" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.py">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.py" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq function">
+<dt class="sig sig-object seq" id="internal.python.get">
+<span class="sig-prename descclassname"><span class="pre">internal.python.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-name descname"><span class="pre">[T]</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internal.python.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.int">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">int</span></span><a class="headerlink" href="#internal.python.int" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.float">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">float</span></span><a class="headerlink" href="#internal.python.float" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.bool">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">bool</span></span><a class="headerlink" href="#internal.python.bool" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.byte">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">byte</span></span><a class="headerlink" href="#internal.python.byte" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.str">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">str</span></span><a class="headerlink" href="#internal.python.str" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.List">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">List</span></span><span class="sig-name descname"><span class="pre">[T]</span></span><a class="headerlink" href="#internal.python.List" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.Dict">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">Dict</span></span><span class="sig-name descname"><span class="pre">[K,V]</span></span><a class="headerlink" href="#internal.python.Dict" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+<dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__from_py__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#internal.python.pyobj" title="internal.python.pyobj"><span class="pre">pyobj</span></a></span></em><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+<dl class="seq extension">
+<dt class="sig sig-object seq" id="internal.python.Set">
+<em class="property"><span class="pre">extension</span> </em><span class="sig-name descname"><span class="pre">Set</span></span><span class="sig-name descname"><span class="pre">[K]</span></span><a class="headerlink" href="#internal.python.Set" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Magic methods:</strong></p>
+<blockquote>
+<div><dl class="seq method">
+<dt class="sig sig-object seq">
+<span class="sig-name descname"><span class="pre">__to_py__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sort.html" class="btn btn-neutral float-right" title="internal.sort" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="khash.html" class="btn btn-neutral float-left" title="internal.khash" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019-2021, seq-lang.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

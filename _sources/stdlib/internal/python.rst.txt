@@ -1,0 +1,312 @@
+.. seq:module:: internal.python
+
+:seq:mod:`internal.python`
+--------------------------
+
+Source code: `internal/python.seq <https://github.com/seq-lang/seq/blob/master/stdlib/internal/python.seq>`_
+
+.. seq:data:: LD
+
+
+
+.. seq:function:: PyUnicode_AsEncodedString( : cobj,  : cobj,  : cobj)
+
+
+
+.. seq:function:: PyBytes_AsString( : cobj)
+
+
+
+.. seq:function:: PyErr_Fetch( : Ptr[cobj],  : Ptr[cobj],  : Ptr[cobj])
+
+
+
+.. seq:function:: PyObject_GetAttrString( : cobj,  : cobj)
+
+
+
+.. seq:function:: PyObject_GetAttr( : cobj,  : cobj)
+
+
+
+.. seq:function:: PyObject_Str( : cobj)
+
+
+
+.. seq:function:: PyRun_SimpleString( : cobj)
+
+
+
+.. seq:function:: Py_IncRef( : cobj)
+
+
+
+.. seq:function:: Py_DecRef( : cobj)
+
+
+
+.. seq:function:: PyObject_Call( : cobj,  : cobj,  : cobj)
+
+
+
+.. seq:function:: PyObject_SetAttrString( : cobj,  : cobj,  : cobj)
+
+
+
+.. seq:function:: PyObject_Length( : cobj)
+
+
+
+.. seq:function:: Py_Initialize()
+
+
+
+.. seq:function:: PyImport_ImportModule( : cobj)
+
+
+
+.. seq:function:: PyLong_FromLong( : int)
+
+
+
+.. seq:function:: PyLong_AsLong( : cobj)
+
+
+
+.. seq:function:: PyFloat_FromDouble( : float)
+
+
+
+.. seq:function:: PyFloat_AsDouble( : cobj)
+
+
+
+.. seq:function:: PyBool_FromLong( : int)
+
+
+
+.. seq:function:: PyObject_IsTrue( : cobj)
+
+
+
+.. seq:function:: PyUnicode_DecodeFSDefaultAndSize( : cobj,  : int)
+
+
+
+.. seq:function:: PyTuple_New( : int)
+
+
+
+.. seq:function:: PyTuple_SetItem( : cobj,  : int,  : cobj)
+
+
+
+.. seq:function:: PyTuple_GetItem( : cobj,  : int)
+
+
+
+.. seq:function:: PyList_New( : int)
+
+
+
+.. seq:function:: PyList_SetItem( : cobj,  : int,  : cobj)
+
+
+
+.. seq:function:: PyList_GetItem( : cobj,  : int)
+
+
+
+.. seq:function:: PySet_New( : cobj)
+
+
+
+.. seq:function:: PySet_Add( : cobj,  : cobj)
+
+
+
+.. seq:function:: PyDict_New()
+
+
+
+.. seq:function:: PyDict_SetItem( : cobj,  : cobj,  : cobj)
+
+
+
+.. seq:function:: PyDict_Next( : cobj,  : Ptr[int],  : Ptr[cobj],  : Ptr[cobj])
+
+
+
+.. seq:function:: PyObject_GetIter( : cobj)
+
+
+
+.. seq:function:: PyIter_Next( : cobj)
+
+
+
+.. seq:function:: init()
+
+
+
+.. seq:function:: ensure_initialized()
+
+
+
+.. seq:extension:: pyobj
+
+   **Magic methods:**
+
+      .. seq:method:: __new__(p : Ptr[byte])
+         :noindex:
+
+      .. seq:method:: __getitem__(t)
+         :noindex:
+
+      .. seq:method:: __add__(t)
+         :noindex:
+
+      .. seq:method:: __setitem__(name : str, val : pyobj)
+         :noindex:
+
+      .. seq:method:: __len__()
+         :noindex:
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__()
+         :noindex:
+
+      .. seq:method:: __str__()
+         :noindex:
+
+      .. seq:method:: __iter__()
+         :noindex:
+
+      .. seq:method:: __call__(*args, **kwargs)
+         :noindex:
+
+   **Methods:**
+
+      .. seq:method:: to_str(errors : str, empty : str = "")
+
+      .. seq:method:: exc_check()
+
+      .. seq:method:: exc_wrap(_retval)
+
+      .. seq:method:: incref()
+
+      .. seq:method:: decref()
+
+      .. seq:method:: get[T]()
+
+
+
+.. seq:function:: none()
+
+
+
+.. seq:function:: py(x)
+
+
+
+.. seq:function:: get[T](x : pyobj)
+
+
+
+.. seq:extension:: int
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__(i : pyobj)
+         :noindex:
+
+
+
+.. seq:extension:: float
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__(d : pyobj)
+         :noindex:
+
+
+
+.. seq:extension:: bool
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__(b : pyobj)
+         :noindex:
+
+
+
+.. seq:extension:: byte
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__(c : pyobj)
+         :noindex:
+
+
+
+.. seq:extension:: str
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__(s : pyobj)
+         :noindex:
+
+
+
+.. seq:extension:: List[T]
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__(v : pyobj)
+         :noindex:
+
+
+
+.. seq:extension:: Dict[K,V]
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+      .. seq:method:: __from_py__(d : pyobj)
+         :noindex:
+
+
+
+.. seq:extension:: Set[K]
+
+   **Magic methods:**
+
+      .. seq:method:: __to_py__()
+         :noindex:
+
+
+
+
+
